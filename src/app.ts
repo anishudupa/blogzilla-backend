@@ -5,9 +5,20 @@ import blogRouter from "./routes/blog.route";
 import ApiError from "./utils/ApiError";
 import ApiResponse from "./utils/ApiResponse";
 import { JsonWebTokenError } from "jsonwebtoken";
+import allowOrigins from "./config/allowOrigin";
 
 const app: Application = express();
-app.use(cors());
+app.use(
+	cors({
+		origin: function (origin, cb) {
+			if (allowOrigins.indexOf(origin!) != -1) {
+				cb(null, true);
+			} else {
+				cb(new Error("Not allowed"));
+			}
+		},
+	})
+);
 app.use(express.json());
 app.use(express.urlencoded());
 
