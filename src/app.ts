@@ -11,7 +11,7 @@ const app: Application = express();
 app.use(
 	cors({
 		origin: function (origin, cb) {
-			if (allowOrigins.indexOf(origin!) != -1) {
+			if (!origin || allowOrigins.includes(origin)) {
 				cb(null, true);
 			} else {
 				cb(new Error("Not allowed"));
@@ -47,3 +47,4 @@ app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
 });
 
 export default app;
+
