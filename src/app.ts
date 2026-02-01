@@ -9,15 +9,7 @@ import allowOrigins from "./config/allowOrigin";
 
 const app: Application = express();
 app.use(
-	cors({
-		origin: function (origin, cb) {
-			if (!origin || allowOrigins.includes(origin)) {
-				cb(null, true);
-			} else {
-				cb(new Error("Not allowed"));
-			}
-		},
-	})
+	cors()
 );
 app.use(express.json());
 app.use(express.urlencoded());
@@ -47,4 +39,5 @@ app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
 });
 
 export default app;
+
 
