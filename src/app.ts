@@ -10,7 +10,7 @@ import allowOrigins from "./config/allowOrigin"
 const app: Application = express()
 app.use(
     cors({
-        origin: "*", // Or "https://blogzilla-phi.vercel.app" if using credentials
+        origin: "https://blogzilla-phi.vercel.app", // Or "https://blogzilla-phi.vercel.app" if using credentials
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization"],
     }),
